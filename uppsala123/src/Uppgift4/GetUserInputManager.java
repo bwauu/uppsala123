@@ -1,5 +1,11 @@
 package Uppgift4;
 
-public class GetUserInputManager {
+import java.util.Scanner;
 
+public class GetUserInputManager {
+    Scanner input = new Scanner(System.in);
+
+    void Dictionary() {
+
+    }
 }

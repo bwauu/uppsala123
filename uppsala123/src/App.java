@@ -2,13 +2,14 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
 
-        int calculationWithoutParentheses = 1 + 1 + 3 * 2 + 5;
+        Book book1 = new Book("Harry Potter","JK Rowling",500,"English");
+        Book book2 = new Book("The 4 hour workweek","Tim Ferriss",300,"English");
 
-        System.out.println(calculationWithoutParentheses);
+
+        System.out.println(book2.pages);
+
         }
 
-
-        
     }
 
 
