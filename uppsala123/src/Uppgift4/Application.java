@@ -1,4 +1,5 @@
 package Uppgift4;
+
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -31,8 +32,6 @@ public class Application {
          */
 
 
-
-
         map.forEach((key, answers) -> {
             /*
             System.out.println(key) will print out the current key of map.
@@ -42,37 +41,49 @@ public class Application {
             /*
 
              */
-            String answer = input.nextLine();
+            String inputAnswer = input.nextLine();
             Iterator it = map.entrySet().iterator();
 
-                List<String> keys = map.get(key);
-            String correctAnswerStringed = keys.toString();
+
+            String stringKey = key.toString();
 
 
-            System.out.println(correctAnswerStringed.length());
+
 
             /* If statement down below checks if user's input is equal to the String q.
             If so then -> System.exit(0) = Will terminate program*/
-            if (answer.equals("q")) {
+            if (inputAnswer.equals("q")) {
                 System.exit(0);
             }
             answers.forEach(a -> {
+                int inputStringLength = inputAnswer.length();
                 int letterPointsCounter = 0;
+                int rightStringLength = a.length();
 //                if (compare user's answer to correct answer)
-                for(int i = 0; i < answer.length(); i++) {
+                if (inputAnswer.length() > 0) {
+                    String currentRightWord = a;
 
-                    if (answer.substring(i).equals(correctAnswerStringed.substring(i))) {
-                        i++;
-                        letterPointsCounter++;
+                    for (int i = 0; i < inputAnswer.length(); i++) {
+
+                        if (inputAnswer.toLowerCase().equals(currentRightWord)) {
+                        System.out.println("correct answer!");
+                            System.out.println(a);
+                        break;
                     }
-                    if(correctAnswerStringed.length() == key.length()) {
-                        System.out.println("Correct Answer!");
+
+                        if(inputAnswer.substring(i).equalsIgnoreCase(a.substring(i))){
+                            letterPointsCounter++;
+                            if (inputStringLength >= rightStringLength * 0.5) {
+                                System.out.println("Close! You got " + rightStringLength/letterPointsCounter + "% right");
+                            }
+                        }
+
                     }
+
+
                 }
-
             });
         });
-
 
 
     }
