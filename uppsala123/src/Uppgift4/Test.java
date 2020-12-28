@@ -1,10 +1,10 @@
 package Uppgift4;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
-
-public class Application {
+public class Test {
 
     public void Run() {
 
@@ -31,7 +31,7 @@ public class Application {
 
          */
 
-
+        AtomicInteger fullWordPoints = new AtomicInteger();
         map.forEach((key, answers) -> {
             /*
             System.out.println(key) will print out the current key of map.
@@ -50,40 +50,38 @@ public class Application {
 
 
 
+
             /* If statement down below checks if user's input is equal to the String q.
             If so then -> System.exit(0) = Will terminate program*/
             if (inputAnswer.equals("q")) {
                 System.exit(0);
             }
             answers.forEach(a -> {
-                int fullWordPoints = 0;
                 int inputStringLength = inputAnswer.length();
                 String currentRightWord = a;
                 int rightStringLength = a.length();
 //                if (compare user's answer to correct answer)
 
 
-                    if (inputAnswer.toLowerCase().equals(currentRightWord)) {
-                        System.out.println("Correct! ");
-                        fullWordPoints++;
+                if (inputAnswer.toLowerCase().equals(currentRightWord)) {
+                    fullWordPoints.getAndIncrement();
+                    System.out.println("Correct! " + fullWordPoints + "/" + map.size());
 
-                    } else {
-                        System.out.println("Sorry, wrong answer!");
-
-                    }
-
-
-                if (inputAnswer.length() > a.length()) {
-                    int letterPointsCounter = 0;
-                    for (int j = 0; j < a.length(); j++) {
-                        if (inputAnswer.charAt(j) == a.charAt(j)) {
-                            letterPointsCounter++;
+                } else if (true) {
+                    int majority = 0;
+                    for (int i = 0; i < a.length(); i++) {
+                        for (int j = 0; j < a.length(); j++) {
+                            if (currentRightWord.charAt(i) == inputAnswer.charAt(j)) {
+                                majority++;
+                            }
                         }
-                        if (letterPointsCounter > rightStringLength * 0.5) {
-                            System.out.println("Nästan rätt din filur!");
-                        }
-
                     }
+                    if (majority > rightStringLength * 0.5) {
+                        System.out.println("Almost correct.");
+                    }
+                } else {
+                    System.out.println("Sorry, wrong answer!");
+
                 }
 
 
