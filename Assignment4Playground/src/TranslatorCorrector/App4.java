@@ -1,11 +1,8 @@
-package Uppgift4;
+package TranslatorCorrector;
 
 import java.util.*;
 
-
-
-public class Application {
-
+public class App4 {
     public void Run() {
         Map<String, List<String>> map = new LinkedHashMap<>();
         map.put("bil", List.of("car"));
@@ -18,7 +15,7 @@ public class Application {
         map.put("måne", List.of("moon"));
         map.put("väg", List.of("road"));
         map.put("snäll", List.of("kind", "sweet"));
-        Dictionary dictionary = new Dictionary(map);
+        Dic4 dictionary = new Dic4(map);
         Scanner input = new Scanner(System.in);
         /*
         Visa ord för användare. check
@@ -63,14 +60,14 @@ public class Application {
 //                if (compare user's answer to correct answer)
 
 
-                    if (inputAnswer.toLowerCase().equals(currentRightWord)) {
-                        System.out.println("Correct! ");
-                        fullWordPoints++;
+                if (inputAnswer.toLowerCase().equals(currentRightWord)) {
+                    System.out.println("Correct! ");
+                    fullWordPoints++;
 
-                    } else {
-                        System.out.println("Sorry, wrong answer!");
+                } else {
+                    System.out.println("Sorry, wrong answer!");
 
-                    }
+                }
 
 
                 if (inputAnswer.length() > a.length()) {

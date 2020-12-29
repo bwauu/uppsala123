@@ -1,15 +1,15 @@
-package Uppgift4;
+package TranslatorCorrector;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 
-public class Test {
+public class Test4 {
 
     public void Run() {
-    // TODO 1. Let user know his/her points regarding the total words answered
-    // TODO 2. Fix secondary word for snäll
-    // TODO 3. Correct answer is (a)
+        // TODO 1. Let user know his/her points regarding the total words answered
+        // TODO 2. Fix secondary word for snäll
+        // TODO 3. Correct answer is (a)
         Map<String, List<String>> map = new LinkedHashMap<>();
         map.put("bil", List.of("car"));
         map.put("hus", List.of("house"));
@@ -21,7 +21,7 @@ public class Test {
         map.put("måne", List.of("moon"));
         map.put("väg", List.of("road"));
         map.put("snäll", List.of("kind", "sweet"));
-        Dictionary dictionary = new Dictionary(map);
+        Dic4 dictionary = new Dic4(map);
 
         Scanner input = new Scanner(System.in);
         /*

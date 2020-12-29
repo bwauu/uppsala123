@@ -1,12 +1,12 @@
-package Uppgift4;
+package TranslatorCorrector;
 
-public class Main {
+public class Main4 {
 
 
     public static void main(String[] args) {
         System.out.println("Write the english. Quit the program by pressing Q.");
 
-        Test app = new Test();
+        Test4 app = new Test4();
         app.Run();
     }
 }
