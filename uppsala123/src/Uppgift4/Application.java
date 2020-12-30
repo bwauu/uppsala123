@@ -28,7 +28,6 @@ public class Application {
         done
 
          */
-        System.out.println("Write the english. Quit the program by pressing Q.");
 
         map.forEach((key, answers) -> {
             /*
