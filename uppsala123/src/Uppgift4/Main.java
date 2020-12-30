@@ -5,7 +5,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Test app = new Test();
+        Application app = new Application();
         app.Run();
     }
 }
