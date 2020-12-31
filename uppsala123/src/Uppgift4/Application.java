@@ -71,14 +71,16 @@ public class Application {
             int totalSynonyms = answers.size();
 
             if (totalSynonyms > 1){
-
+                Scanner input = new Scanner(System.in);
+                String inputAnswer = input.nextLine();
                 for ( List<String> value : map.values() ) {
-                    System.out.println("hej");
                 }
 
                 String answersStringed = answers.toString();
                 for(int i = 0; i < totalSynonyms; i++) {
-
+                    if(answers.get(i).equalsIgnoreCase(inputAnswer)) {
+                        System.out.println("Correct");
+                    }
                 }
             }
             /* If statement down below checks if user's input is equal to the String q.
