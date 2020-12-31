@@ -9,6 +9,9 @@ public class Dictionary {
     private Map<String, List<String>> dictionary;
     public Dictionary(Map<String, List<String>> dictionary) {
         this.dictionary = dictionary;
+
+        /*
+        * Here you  */
         dictionary.put("bil", List.of("car", "runcarsnowpen"));
         dictionary.put("hus", List.of("house"));
         dictionary.put("springa", List.of("run"));

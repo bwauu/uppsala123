@@ -1,5 +1,7 @@
 package Uppgift4;
 
+import com.sun.jdi.Value;
+
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -14,7 +16,7 @@ public class Application {
 
 
     public void Run() {
-
+        int cwc = 0;
         Map<String, List<String>> map = new LinkedHashMap<>();
         Dictionary dictionary = new Dictionary(map);
 
@@ -41,16 +43,16 @@ public class Application {
 
          */
 
+        map.entrySet();
 
 
-        Scanner input = new Scanner(System.in);
 
-        AtomicInteger fullWordPoints = new AtomicInteger();
 
-        AtomicInteger currentWordCounter = new AtomicInteger();
+
+
 
         map.forEach((words, answers) -> {
-            int totalSynonyms = answers.size();
+
             /*
             1. The variable "words" references the keys in map.
             2. The varible "answers" references the value of the key.
@@ -65,62 +67,43 @@ public class Application {
             /*
             currentWordCounter is incrementing each iteration
              */
-            currentWordCounter.getAndIncrement();
 
-            String inputAnswer = input.nextLine();
+            int totalSynonyms = answers.size();
+
+            if (totalSynonyms > 1){
+
+                for ( List<String> value : map.values() ) {
+                    System.out.println("hej");
+                }
+
+                String answersStringed = answers.toString();
+                for(int i = 0; i < totalSynonyms; i++) {
+
+                }
+            }
             /* If statement down below checks if user's input is equal to the String q.
             If so then -> System.exit(0) = Will terminate program*/
-            Speller(answers);
-            answers.forEach(a -> {
-
-                if (inputAnswer.equals("q")) {
-                    currentWordCounter.getAndDecrement();
-                    System.out.println("You answered a total of " +
-                            currentWordCounter + " words and had " + fullWordPoints + " right. Kind regard!");
-                    System.exit(0);
-                }
-
-
-                /* TODO 1
-                Iteration through each for 1 time.
-                if inputAnswer == 1 out of 2 synonyms, then sout correct! + getAndDecrement
-                 */
-
-                else if (inputAnswer.toLowerCase().equals(a)) {
-                    fullWordPoints.getAndIncrement();
-                    System.out.println("Correct! " + fullWordPoints + " right out of " + currentWordCounter + " words.");
-
-                } else if (inputAnswer.length() == a.length()) {
-                    /* TODO 2
-                    If inputAnswer have a majority of letters in index places of a
-                    Then sout Almost right!
-                    */
-                    int majority = 0;
-                    for (int i = 0; i < a.length(); i++) {
-                        for (int j = 0; j < a.length(); j++) {
-                            if (a.charAt(i) == inputAnswer.charAt(j)) {
-                                majority++;
-                            }
-                        }
-                    }
-                    if (majority >= a.length() * 0.5) {
-                        System.out.println("Almost correct.");
-
-                    }
-
-
-                } else {
-                    System.out.println("Incorrect answer!");
-                }
-
-            });
+            else {
+                spellchecker(answers);
+            }
 
         });
-        System.out.println("You answered a total of " +
-                map.size() + " words and had " + fullWordPoints + " points. Kind regard!");
+
 
     }
-    public static void Speller(List<String> answers)  {
+
+    public static void SynonymSpellchecker(Map.Entry<String, String> entry) {
+
+    }
+    public static void spellchecker(List<String> answers)  {
+        Scanner input = new Scanner(System.in);
+        String inputAnswer = input.nextLine();
+
+
+        AtomicInteger currentWordCounter = new AtomicInteger();
+        currentWordCounter.getAndIncrement();
+        AtomicInteger fullWordPoints = new AtomicInteger();
+
         answers.forEach(a -> {
 
             if (inputAnswer.equals("q")) {
@@ -136,7 +119,7 @@ public class Application {
                 if inputAnswer == 1 out of 2 synonyms, then sout correct! + getAndDecrement
                  */
 
-            else if (inputAnswer.toLowerCase().equals(a)) {
+            if (inputAnswer.toLowerCase().equals(a)) {
                 fullWordPoints.getAndIncrement();
                 System.out.println("Correct! " + fullWordPoints + " right out of " + currentWordCounter + " words.");
 
@@ -159,7 +142,7 @@ public class Application {
                 }
 
 
-            } else {
+            }  else {
                 System.out.println("Incorrect answer!");
             }
 
