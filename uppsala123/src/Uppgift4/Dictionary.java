@@ -12,7 +12,7 @@ public class Dictionary {
 
         /*
         * Here you  */
-        dictionary.put("bil", List.of("car", "runcarsnowpen"));
+        dictionary.put("hej", List.of("hi", "hello"));
         dictionary.put("hus", List.of("house"));
         dictionary.put("springa", List.of("run"));
         dictionary.put("blå", List.of("blue"));

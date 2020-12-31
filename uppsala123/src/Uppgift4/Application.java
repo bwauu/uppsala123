@@ -43,7 +43,7 @@ public class Application {
 
          */
 
-        map.entrySet();
+
 
 
 
@@ -68,20 +68,20 @@ public class Application {
             currentWordCounter is incrementing each iteration
              */
 
-            int totalSynonyms = answers.size();
+            int totalAnswerSynonyms = answers.size();
 
-            if (totalSynonyms > 1){
+            if (totalAnswerSynonyms > 1){
                 Scanner input = new Scanner(System.in);
                 String inputAnswer = input.nextLine();
-                for ( List<String> value : map.values() ) {
-                }
+
 
                 String answersStringed = answers.toString();
-                for(int i = 0; i < totalSynonyms; i++) {
+                for(int i = 0; i < totalAnswerSynonyms; i++) {
                     if(answers.get(i).equalsIgnoreCase(inputAnswer)) {
                         System.out.println("Correct");
                     }
                 }
+
             }
             /* If statement down below checks if user's input is equal to the String q.
             If so then -> System.exit(0) = Will terminate program*/
@@ -103,8 +103,8 @@ public class Application {
 
 
         AtomicInteger currentWordCounter = new AtomicInteger();
-        currentWordCounter.getAndIncrement();
         AtomicInteger fullWordPoints = new AtomicInteger();
+        currentWordCounter.getAndIncrement();
 
         answers.forEach(a -> {
 
