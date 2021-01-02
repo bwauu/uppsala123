@@ -1,7 +1,6 @@
 package Uppgift4;
 
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Dictionary {
 
@@ -21,15 +20,11 @@ public class Dictionary {
      to the word to be translated
      e.i.
             map.put("Hej", List.of("Hi","Hello"));
-
  */
-    public Dictionary(Map<String, List<String>> dictionary) {
 
-        this.dictionary = dictionary;
-
-        /*
-        * Here you  */
-        dictionary.put("hej", List.of("hi", "hello"));
+    public Dictionary() {
+        this.dictionary = new LinkedHashMap<>();
+        dictionary.put("bil", List.of("car", "runcarsnowpen"));
         dictionary.put("hus", List.of("house"));
         dictionary.put("springa", List.of("run"));
         dictionary.put("blå", List.of("blue"));
@@ -39,6 +34,17 @@ public class Dictionary {
         dictionary.put("måne", List.of("moon"));
         dictionary.put("väg", List.of("road"));
         dictionary.put("snäll", List.of("kind", "sweet"));
+
     }
 
+    public Set<Map.Entry<String, List<String>>> words() {
+
+        return this.dictionary.entrySet();
+    }
+
+    public int getSize() {
+
+
+       return this.dictionary.size();
+    }
 }
