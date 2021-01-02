@@ -3,9 +3,17 @@ package Uppgift4;
 
 import java.util.List;
 
+
 public class Spellchecker {
     // float will make it easier to interpret correctness.
     // if would be lo
+
+    /**
+     *
+     * @param word input String from user
+     * @param correctWords refers to List of strings that are correct key translation
+     * @return return bestresult
+     */
     public float spellcheck(String word, List<String> correctWords) {
         float bestResult = 0;
         // ULTIMATE SPELLCHECKER MUAHAHAHA
@@ -18,6 +26,12 @@ public class Spellchecker {
         return bestResult;
     }
 
+    /**
+     *
+     * @param word refers to user's input as a String
+     * @param correctWord dictionary entrySet value
+     * @return a float between 0 and 1 of correctness
+     */
     public float spellcheck(String word, String correctWord) {
         if (correctWord == null || word == null) {
             return 0;

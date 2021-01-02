@@ -37,11 +37,19 @@ public class Dictionary {
 
     }
 
+    /**
+     *
+     * @return applied entrySet() method on this.dictionary
+     */
     public Set<Map.Entry<String, List<String>>> words() {
 
         return this.dictionary.entrySet();
     }
 
+    /**
+     *
+     * @return size of dictionary map as an int.
+     */
     public int getSize() {
 
 
