@@ -1,23 +1,18 @@
 package Uppgift4;
 
-import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
 
 
 public class Application {
 
-
     static void setLanguage(String language) {
-
         System.out.println("--------------------------------------------------------------- Write the " + language + " word. " + "Quit the program by pressing Q ---------------------------------------------------------------");
     }
 
-
     public void Run() {
         Dictionary dictionary = new Dictionary();
-        // TODO 1. Let user know his/her points regarding the total words answered
-        // TODO 2. Fix secondary word for snäll
-        // TODO 3. Correct answer is (a)
 
         setLanguage("english");
 
@@ -25,11 +20,11 @@ public class Application {
 
         int fullWordPoints = 0;
         int currentWordCounter = 0;
-        String resultMessage;
         Spellchecker spellchecker = new Spellchecker();
 
-
         for (Map.Entry<String, List<String>> entry : dictionary.words()) {
+            currentWordCounter++;
+
             System.out.println(entry.getKey());
             String inputAnswer = input.nextLine();
 
@@ -41,25 +36,18 @@ public class Application {
                         currentWordCounter + " words and had " + fullWordPoints + " right. Kind regard!");
                 System.exit(0);
             }
+            String resultMessage = null;
+            float result = spellchecker.spellcheck(inputAnswer, entry.getValue());
             // ULTIMATE SPELLCHECKER MUAHAHAHA
-            for (String correctAnswer : entry.getValue()) {
-                float result = spellchecker.spellcheck(inputAnswer, correctAnswer);
-                if (correctAnswer.equalsIgnoreCase(inputAnswer)) {
-                    currentWordCounter++;
-                    fullWordPoints++;
-
-                    resultMessage = "Correct! " + fullWordPoints + "/" + currentWordCounter;
-
-                } else if (result > 0.5 ) {
-                    currentWordCounter++;
-                    resultMessage = "Almost!";
-                }
-                else {
-                    currentWordCounter++;
-                    resultMessage = "Incorrect!";
-                }
-                System.out.println(resultMessage);
+            if (result == 1) {
+                fullWordPoints++;
+                resultMessage = "Correct! ";
+            } else if (result > 0.5) {
+                resultMessage = "Almost! ";
+            } else {
+                resultMessage = "Incorrect! ";
             }
+            System.out.println(resultMessage + " " + fullWordPoints + "/" + currentWordCounter);
         }
 
         System.out.println("You answered a total of " +
