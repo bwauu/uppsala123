@@ -1,4 +1,7 @@
 package Uppgift4;
+/**
+ * A class where Map is used as a dictionary.
+ */
 
 import java.util.*;
 
@@ -39,7 +42,7 @@ public class Dictionary {
 
     /**
      *
-     * @return applied entrySet() method on this.dictionary
+     * @return entrySet() method on this.dictionary
      */
     public Set<Map.Entry<String, List<String>>> words() {
 

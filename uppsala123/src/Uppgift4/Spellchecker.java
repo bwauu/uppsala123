@@ -1,22 +1,23 @@
 package Uppgift4;
-
+/**
+ * This Spellchecker.java class contains methods that stands for the logical interpretation of correctness of word.
+ *
+ */
 
 import java.util.List;
 
 
 public class Spellchecker {
-    // float will make it easier to interpret correctness.
-    // if would be lo
 
     /**
-     *
-     * @param word input String from user
-     * @param correctWords refers to List of strings that are correct key translation
-     * @return return bestresult
+     *String, List<String>
+     * @param word refers to user's input as a String
+     * @param correctWords refers to List of values in map.
+     * @return float as user's best result.
      */
     public float spellcheck(String word, List<String> correctWords) {
         float bestResult = 0;
-        // ULTIMATE SPELLCHECKER MUAHAHAHA
+
         for (String correctAnswer : correctWords) {
             float result = spellcheck(word, correctAnswer);
             if (result > bestResult) {
@@ -29,7 +30,7 @@ public class Spellchecker {
     /**
      *
      * @param word refers to user's input as a String
-     * @param correctWord dictionary entrySet value
+     * @param correctWord refers to List of values in map.
      * @return a float between 0 and 1 of correctness
      */
     public float spellcheck(String word, String correctWord) {
