@@ -1,13 +1,13 @@
 package Uppgift4;
-/**
- * A class where Map is declared and used in methods.
+/*
+ * A class where Map "dictionary" is declared as a instance variable and used in methods.
  */
 
 import java.util.*;
 
 public class Dictionary {
 
-    /* instance variable declartion */
+    /* instance variable declaration */
     private Map<String, List<String>> dictionary;
 
     /*

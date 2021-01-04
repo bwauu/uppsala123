@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+/**
+ * Application is responsible for the UI of this program.
+ */
 
 public class Application {
     /**
