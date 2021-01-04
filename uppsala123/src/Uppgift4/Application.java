@@ -19,10 +19,11 @@ public class Application {
      * Application start!
      */
     public void Run() {
+
+        /* Invoke dictionary constructor  */
         Dictionary dictionary = new Dictionary();
-
         setLanguage("english");
-
+        /* new = invoke constructor */
         Scanner input = new Scanner(System.in);
 
         int fullWordPoints = 0;

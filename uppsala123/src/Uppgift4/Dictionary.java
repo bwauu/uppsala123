@@ -1,13 +1,13 @@
 package Uppgift4;
 /**
- * A class where Map is used as a dictionary.
+ * A class where Map is declared and used in methods.
  */
 
 import java.util.*;
 
 public class Dictionary {
 
-
+    /* instance variable declartion */
     private Map<String, List<String>> dictionary;
 
     /*
@@ -24,6 +24,7 @@ public class Dictionary {
      e.i.
             map.put("Hej", List.of("Hi","Hello"));
  */
+
 
     public Dictionary() {
         this.dictionary = new LinkedHashMap<>();
@@ -45,7 +46,6 @@ public class Dictionary {
      * @return entrySet() method on this.dictionary
      */
     public Set<Map.Entry<String, List<String>>> words() {
-
         return this.dictionary.entrySet();
     }
 
