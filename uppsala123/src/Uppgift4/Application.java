@@ -36,7 +36,7 @@ public class Application {
         for (Map.Entry<String, List<String>> entry : dictionary.words()) {
             currentWordCounter++;
 
-            System.out.println(entry.getKey());
+            System.out.println(entry.getValue());
             String inputAnswer = input.nextLine();
 
             /*
