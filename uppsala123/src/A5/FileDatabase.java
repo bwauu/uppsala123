@@ -7,10 +7,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class FileDatabase {
 
@@ -45,26 +42,40 @@ public class FileDatabase {
  */
     //sökväg till filen text.txt i samma katalog som projektet, dvs en nivå ovan src
     public void fileDatabase() {
+        //läser in hela filen
+        Path path = Paths.get("uppsala123\\src\\A5\\MovieSet.txt");
+
+
+        //läser in hela filen
+
+        //ersätter innehållet i filen med det uppdaterade (där vi adderar tre nya rader)
         // Read File
         // Parse each line
-        Path path = Paths.get("MovieSet.txt");
+
         try {
             //om filen inte finns så skapar vi den
             if (!Files.exists(path)) {
                 Files.createFile(path);
             }
-
-
-            //läser in hela filen
+            List<String> lines = new ArrayList<String>();
             List<String> allLines = Files.readAllLines(path);
 
-            //skriver ut innehållet
-            for (String line : allLines) {
-                System.out.println(line);
-                // TODO: Checkout split().
-                String helpMe = line;
 
+
+            Files.write(path, lines);
+
+            //skriver ut innehållet
+
+            for (String line : allLines) {
+                String[] tokens = line.split(";",1);
+                String lastCut = tokens[tokens.length - 1];
+                // TODO: Checkout split().
+                lines.add(line);
+                movies.put(lastCut, lastCut.substring(0, lines.lastIndexOf(line)));
             }
+
+
+
         } catch (IOException e) {
             System.out.println("Oops! Something went wrong!");
             e.printStackTrace();
@@ -74,6 +85,8 @@ public class FileDatabase {
 
     public FileDatabase() {
         this.movies = new LinkedHashMap<>();
+
+        /*
         movies.put("Terminator 2 - Domedagen", "4/5");
         movies.put("Nyckeln till frihet", "4/5");
         movies.put("Pulp fiction", "4/5");
@@ -83,6 +96,8 @@ public class FileDatabase {
         movies.put("De misstänkta", "5/5");
         movies.put("American History X", "4/5");
         movies.put("Gladiator", "4/5");
+
+         */
     }
 
     /**

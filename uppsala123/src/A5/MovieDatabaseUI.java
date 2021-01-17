@@ -19,6 +19,7 @@ public class MovieDatabaseUI {
         moviesDatabase.fileDatabase();
 
 
+
     }
 
     /**
@@ -118,9 +119,9 @@ public class MovieDatabaseUI {
         List myList = new ArrayList();
         //TODO: Add call to search movie database based on input
         for (Map.Entry<String, String> entry : moviesDatabase.moviesEntrySet()) {
-            String dumbRatingSystem = entry.getValue().toString();
+            String dumbRatingSystem = entry.getValue();
 
-            char ratingAsChar = dumbRatingSystem.charAt(1);
+            char ratingAsChar = dumbRatingSystem.charAt(0);
 
             int currentRatingInMoviesDB = Character.getNumericValue(ratingAsChar);
 
@@ -144,7 +145,7 @@ public class MovieDatabaseUI {
         int reviewScore = getNumberInput(_scanner, 1, 5, "Betyg (1 - 5): ");
         String reviewScoreStringed = String.valueOf(reviewScore);
         String realScoreIPromiseLawl = reviewScoreStringed.concat("/5");
-        moviesDatabase.movies.put(title, realScoreIPromiseLawl);
+        moviesDatabase.movies.put(title,realScoreIPromiseLawl);
 
         //TODO: Add call to add movie into database
 
