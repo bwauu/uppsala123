@@ -1,6 +1,6 @@
 package Uppgift5;
 
-import A5.Movies;
+import A5.FileDatabase;
 
 import java.util.List;
 import java.util.Map;
@@ -10,10 +10,10 @@ public class Application {
 
     public void Run() {
 
-        Movies movies = new Movies();
+        FileDatabase movies = new FileDatabase();
         Scanner input = new Scanner(System.in);
 
-        for (Map.Entry<String, List<String>> entry : movies.moviesEntrySet()) {
+        for (Map.Entry<String, String> entry : movies.moviesEntrySet()) {
             String inputAnswer = input.nextLine();
         }
     }
