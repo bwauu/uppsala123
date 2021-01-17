@@ -3,34 +3,76 @@ package A5;
  * A class where Map "dictionary" is declared as a instance variable and used in methods.
  */
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class FileDatabase {
 
     /* instance variable declaration */
     Map<String, String> movies;
 
-    /*
-                            Dictionary explanation map.put(K key, V value);
-     1. The variable K references the key in map.
-     2. The variable  V references the value of the key in map.
-     To add words to dictionary:
-     Use the map.put() method to add in words = (to be translated) = key
-     and translated words = (answers) = values
-     map.put("vän", List.of("friend"))
-     where "vän" is the word to be translated and List.of("friend") is the translation.
-     The List.of methods is used to allow multiple values in key. This means that you can allow other synonyms
-     to the word to be translated
-     e.i.
-            map.put("Hej", List.of("Hi","Hello"));
+    final static String filePath = "C:\\Users\\wiapp\\IdeaProjects\\uppsala123\\src\\A5\\MovieSet.txt";
+    //read text file to HashMap
+    Map<String, Integer> mapFromFile = getHashMapFromTextFile();
 
+    //iterate over HashMap entries
+        for(Map.Entry<String, Integer> entry : mapFromFile.entrySet()){
+        System.out.println( entry.getKey() + " => " + entry.getValue() );
+    }
+    public static Map<String, Integer> getHashMapFromTextFile(){
+
+        Map<String, Integer> mapFileContents = new LinkedHashMap<String, Integer>();
+        BufferedReader br = null;
+
+        try{
+
+            //create file object
+            File file = new File(filePath);
+
+            //create BufferedReader object from the File
+            br = new BufferedReader( new FileReader(file) );
+
+            String line = null;
+
+            //read file line by line
+            while ( (line = br.readLine()) != null ){
+
+                //split the line by :
+                String[] parts = line.split(";");
+
+                //first part is name, second is age
+                String name = parts[0].trim();
+                Integer age = Integer.parseInt( parts[1].trim() );
+
+                //put name, age in HashMap if they are not empty
+                if( !name.equals("") && !age.equals("") )
+                    mapFileContents.put(name, age);
+            }
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+
+            //Always close the BufferedReader
+            if(br != null){
+                try {
+                    br.close();
+                }catch(Exception e){};
+            }
+        }
+
+        return mapFileContents;
+
+    }
+
+
+    /*
 
      TODO:
      * Google:
@@ -47,6 +89,7 @@ public class FileDatabase {
     public void fileDatabase() {
         // Read File
         // Parse each line
+
         Path path = Paths.get("MovieSet.txt");
         try {
             //om filen inte finns så skapar vi den
@@ -54,17 +97,24 @@ public class FileDatabase {
                 Files.createFile(path);
             }
 
-
             //läser in hela filen
             List<String> allLines = Files.readAllLines(path);
 
+            //läser in hela filen
+            List<String> lines = new ArrayList<String>();
+            //ersätter innehållet i filen med det uppdaterade (där vi adderar tre nya rader)
+            //Files.write(path, lines);
+            
             //skriver ut innehållet
+            /*
             for (String line : allLines) {
-                System.out.println(line);
+                String[] tokens = line.split(";");
+                String lastCut = tokens[tokens.length - 1];
                 // TODO: Checkout split().
-                String helpMe = line;
-
+                lines.add(lastCut);
             }
+            System.out.println(lines);
+            */
         } catch (IOException e) {
             System.out.println("Oops! Something went wrong!");
             e.printStackTrace();
@@ -74,6 +124,9 @@ public class FileDatabase {
 
     public FileDatabase() {
         this.movies = new LinkedHashMap<>();
+
+
+        /*
         movies.put("Terminator 2 - Domedagen", "4/5");
         movies.put("Nyckeln till frihet", "4/5");
         movies.put("Pulp fiction", "4/5");
@@ -83,6 +136,7 @@ public class FileDatabase {
         movies.put("De misstänkta", "5/5");
         movies.put("American History X", "4/5");
         movies.put("Gladiator", "4/5");
+         */
     }
 
     /**
