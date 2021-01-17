@@ -17,7 +17,7 @@ public class MovieDatabaseUI {
      */
     public MovieDatabaseUI() {
         moviesDatabase.fileDatabase();
-
+        addMovie();
 
 
     }
@@ -146,6 +146,7 @@ public class MovieDatabaseUI {
         String reviewScoreStringed = String.valueOf(reviewScore);
         String realScoreIPromiseLawl = reviewScoreStringed.concat("/5");
         moviesDatabase.movies.put(title,realScoreIPromiseLawl);
+
 
         //TODO: Add call to add movie into database
 

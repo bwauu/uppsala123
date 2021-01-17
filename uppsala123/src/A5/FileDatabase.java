@@ -13,21 +13,7 @@ public class FileDatabase {
 
     /* instance variable declaration */
     Map<String, String> movies;
-
     /*
-                            Dictionary explanation map.put(K key, V value);
-     1. The variable K references the key in map.
-     2. The variable  V references the value of the key in map.
-     To add words to dictionary:
-     Use the map.put() method to add in words = (to be translated) = key
-     and translated words = (answers) = values
-     map.put("vän", List.of("friend"))
-     where "vän" is the word to be translated and List.of("friend") is the translation.
-     The List.of methods is used to allow multiple values in key. This means that you can allow other synonyms
-     to the word to be translated
-     e.i.
-            map.put("Hej", List.of("Hi","Hello"));
-
 
      TODO:
      * Google:
@@ -61,19 +47,18 @@ public class FileDatabase {
             List<String> allLines = Files.readAllLines(path);
 
 
-
-            Files.write(path, lines);
-
             //skriver ut innehållet
 
             for (String line : allLines) {
-                String[] tokens = line.split(";",1);
-                String lastCut = tokens[tokens.length - 1];
-                // TODO: Checkout split().
-                lines.add(line);
-                movies.put(lastCut, lastCut.substring(0, lines.lastIndexOf(line)));
-            }
 
+                String[] parts = line.split(";");
+                String part1 = parts[0];
+                String part2 = parts[1];
+
+                lines.add(line);
+                movies.put(part1, part2);
+                Files.write(path, lines);
+            }
 
 
         } catch (IOException e) {
@@ -86,18 +71,7 @@ public class FileDatabase {
     public FileDatabase() {
         this.movies = new LinkedHashMap<>();
 
-        /*
-        movies.put("Terminator 2 - Domedagen", "4/5");
-        movies.put("Nyckeln till frihet", "4/5");
-        movies.put("Pulp fiction", "4/5");
-        movies.put("Fight club", "4/5");
-        movies.put("Matrix", "5/5");
-        movies.put("När lammen tysnar", "4/5");
-        movies.put("De misstänkta", "5/5");
-        movies.put("American History X", "4/5");
-        movies.put("Gladiator", "4/5");
 
-         */
     }
 
     /**
@@ -108,11 +82,4 @@ public class FileDatabase {
 
     }
 
-
-    /**
-     * @return size of dictionary map as an int.
-     */
-    public int getSize() {
-        return this.movies.size();
-    }
 }
