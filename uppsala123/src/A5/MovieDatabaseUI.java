@@ -1,5 +1,6 @@
 package A5;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -17,8 +18,6 @@ public class MovieDatabaseUI {
      */
     public MovieDatabaseUI() {
         moviesDatabase.fileDatabase();
-        addMovie();
-
 
     }
 
@@ -26,7 +25,6 @@ public class MovieDatabaseUI {
      * Start the movie database UI.
      */
     public void startUI() {
-
 
         _scanner = new Scanner(System.in);
         int input;
@@ -115,13 +113,13 @@ public class MovieDatabaseUI {
      */
     private void searchReviewScore() {
         int review = getNumberInput(_scanner, 1, 5, "Ange minimibetyg (1 - 5): ");
-        String reviewStringed = String.valueOf(review);
-        List myList = new ArrayList();
+
+
         //TODO: Add call to search movie database based on input
         for (Map.Entry<String, String> entry : moviesDatabase.moviesEntrySet()) {
             String dumbRatingSystem = entry.getValue();
 
-            char ratingAsChar = dumbRatingSystem.charAt(0);
+            char ratingAsChar = dumbRatingSystem.charAt(1);
 
             int currentRatingInMoviesDB = Character.getNumericValue(ratingAsChar);
 
@@ -139,12 +137,17 @@ public class MovieDatabaseUI {
      * Get information from user on the new movie and add
      * it to the database.
      */
+
     private void addMovie() {
+
+
         System.out.print("Titel: ");
         String title = _scanner.nextLine().trim();
         int reviewScore = getNumberInput(_scanner, 1, 5, "Betyg (1 - 5): ");
         String reviewScoreStringed = String.valueOf(reviewScore);
         String realScoreIPromiseLawl = reviewScoreStringed.concat("/5");
+
+
         moviesDatabase.movies.put(title,realScoreIPromiseLawl);
 
 
@@ -152,12 +155,14 @@ public class MovieDatabaseUI {
 
     }
 
+
     /**
      * Return the main menu text.
      *
      * @return the main menu text
      */
     private String getMainMenu() {
+
         return "-------------------\n" +
                 "1. Sök på titel\n" +
                 "2. Sök på betyg\n" +

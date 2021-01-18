@@ -16,5 +16,6 @@ public class Assignment5 {
 		//Construct and start the UI
 		new MovieDatabaseUI().startUI();
 
+
 	}
 }
