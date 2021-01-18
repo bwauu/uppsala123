@@ -82,4 +82,7 @@ public class FileDatabase {
 
     }
 
+    public Map<String, String> getMovies() {
+        return movies;
+    }
 }
