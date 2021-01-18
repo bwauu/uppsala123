@@ -174,8 +174,10 @@ public class MovieDatabaseUI {
                 for (Map.Entry<String, String> entry : moviesDatabase.moviesEntrySet()) {
                     lines.add(line);
                     lines.add(part2);
+                    lines.add(part1);
+                    moviesDatabase.movies.put(part1,part2);
 
-                    Files.write(path, lines);
+                    Files.write(path,lines);
                 }
 
             }
