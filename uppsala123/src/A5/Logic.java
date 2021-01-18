@@ -1,10 +1,9 @@
 package A5;
+
 /**
  * This Spellchecker.java class contains methods that stands for the logical interpretation of correctness of word.
  *
  */
-
-import java.util.List;
 
 public class Logic {
 

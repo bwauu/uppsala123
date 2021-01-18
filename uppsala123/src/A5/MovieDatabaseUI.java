@@ -1,6 +1,5 @@
 package A5;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -19,7 +18,6 @@ public class MovieDatabaseUI {
      */
     public MovieDatabaseUI() {
         moviesDatabase.fileDatabase();
-
     }
 
     /**
@@ -37,17 +35,10 @@ public class MovieDatabaseUI {
             input = getNumberInput(_scanner, 1, 4, getMainMenu());
 
             switch (input) {
-                case 1:
-                    searchTitel();
-                    break;
-                case 2:
-                    searchReviewScore();
-                    break;
-                case 3:
-                    addMovie();
-                    break;
-                case 4:
-                    quit = true;
+                case 1 -> searchTitel();
+                case 2 -> searchReviewScore();
+                case 3 -> addMovie();
+                case 4 -> quit = true;
             }
         }
         //Close scanner to free resources
@@ -79,13 +70,6 @@ public class MovieDatabaseUI {
         }
         return input;
     }
-
-    Logic logicSearcher = new Logic();
-
-    public FileDatabase getMoviesDatabase() {
-        return moviesDatabase;
-    }
-
     /**
      * Get search string from user, search title in the movie
      * database and present the search result.
@@ -94,24 +78,16 @@ public class MovieDatabaseUI {
         System.out.print("Ange sökord: ");
         String title = _scanner.nextLine().trim();
 
-
         //TODO: Add call to search movie database based on input
         for (Map.Entry<String, String> entry : moviesDatabase.moviesEntrySet()) {
             String currentMovieTitle = entry.getKey().toLowerCase();
 
-
-            StringBuilder result = logicSearcher.spellcheck(title, entry.getKey());
             if (currentMovieTitle.contains(title.toLowerCase())) {
                 System.out.println(entry.getKey());
             }
-
         }
-
-
         //TODO: Present results to user
-
     }
-
     /**
      * Get search string from user, search review score in the movie
      * database and present the search result.
@@ -119,11 +95,9 @@ public class MovieDatabaseUI {
     private void searchReviewScore() {
         int review = getNumberInput(_scanner, 1, 5, "Ange minimibetyg (1 - 5): ");
 
-
         //TODO: Add call to search movie database based on input
         for (Map.Entry<String, String> entry : moviesDatabase.moviesEntrySet()) {
             String dumbRatingSystem = entry.getValue();
-
 
             char ratingAsChar = dumbRatingSystem.charAt(0);
 
@@ -131,12 +105,9 @@ public class MovieDatabaseUI {
 
             if (currentRatingInMoviesDB == review) {
                 System.out.println("Titel: " + entry.getKey() + " Betyg: " + entry.getValue());
-
             }
-
         }
         //TODO: Present results to user
-
     }
 
     /**
@@ -164,10 +135,7 @@ public class MovieDatabaseUI {
 
             List<String> allLines = Files.readAllLines(path);
 
-
             //skriver ut innehållet
-
-
             for (String line : allLines) {
 
                 String[] parts = line.split(";");
@@ -175,23 +143,19 @@ public class MovieDatabaseUI {
                 String part2 = parts[1];
                 lines.add(line);
 
-
                 moviesDatabase.movies.put(part1, part2);
                 Files.write(path, lines);
-
-
             }
 
-
+        // handling exception
         } catch (IOException e) {
             System.out.println("Oops! Something went wrong!");
             e.printStackTrace();
         }
+
     }
 
     //TODO: Add call to add movie into database
-
-
     /**
      * Return the main menu text.
      *
