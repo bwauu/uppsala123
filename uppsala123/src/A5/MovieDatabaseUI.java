@@ -152,33 +152,33 @@ public class MovieDatabaseUI {
         int reviewScore = getNumberInput(_scanner, 1, 5, "Betyg (1 - 5): ");
         String reviewScoreStringed = String.valueOf(reviewScore);
         String realScoreIPromiseLawl = reviewScoreStringed.concat("/5");
+        String newMovieAdd = title.concat(";" + realScoreIPromiseLawl);
+        List<String> lines = new ArrayList<String>();
+        lines.add(newMovieAdd);
 
-
-        moviesDatabase.movies.put(title, realScoreIPromiseLawl);
         try {
             //om filen inte finns så skapar vi den
             if (!Files.exists(path)) {
                 Files.createFile(path);
             }
-            List<String> lines = new ArrayList<String>();
+
             List<String> allLines = Files.readAllLines(path);
 
 
             //skriver ut innehållet
+
 
             for (String line : allLines) {
 
                 String[] parts = line.split(";");
                 String part1 = parts[0];
                 String part2 = parts[1];
-                for (Map.Entry<String, String> entry : moviesDatabase.moviesEntrySet()) {
-                    lines.add(line);
-                    lines.add(part2);
-                    lines.add(part1);
-                    moviesDatabase.movies.put(part1,part2);
+                lines.add(line);
 
-                    Files.write(path, Collections.singleton(line));
-                }
+
+                moviesDatabase.movies.put(part1, part2);
+                Files.write(path, lines);
+
 
             }
 
@@ -190,8 +190,6 @@ public class MovieDatabaseUI {
     }
 
     //TODO: Add call to add movie into database
-
-
 
 
     /**

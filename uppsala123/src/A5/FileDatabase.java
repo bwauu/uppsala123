@@ -54,10 +54,11 @@ public class FileDatabase {
                 String[] parts = line.split(";");
                 String part1 = parts[0];
                 String part2 = parts[1];
-
                 lines.add(line);
+
                 movies.put(part1, part2);
                 Files.write(path, lines);
+
             }
 
 
@@ -82,7 +83,4 @@ public class FileDatabase {
 
     }
 
-    public Map<String, String> getMovies() {
-        return movies;
-    }
 }
