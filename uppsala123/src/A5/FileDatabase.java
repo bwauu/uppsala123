@@ -57,6 +57,7 @@ public class FileDatabase {
 
                 lines.add(line);
                 movies.put(part1, part2);
+
                 Files.write(path, lines);
             }
 
@@ -82,7 +83,5 @@ public class FileDatabase {
 
     }
 
-    public Map<String, String> getMovies() {
-        return movies;
-    }
+
 }

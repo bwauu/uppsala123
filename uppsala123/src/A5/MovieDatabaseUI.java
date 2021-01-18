@@ -2,6 +2,7 @@ package A5;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
@@ -81,6 +82,10 @@ public class MovieDatabaseUI {
 
     Logic logicSearcher = new Logic();
 
+    public FileDatabase getMoviesDatabase() {
+        return moviesDatabase;
+    }
+
     /**
      * Get search string from user, search title in the movie
      * database and present the search result.
@@ -118,7 +123,7 @@ public class MovieDatabaseUI {
         //TODO: Add call to search movie database based on input
         for (Map.Entry<String, String> entry : moviesDatabase.moviesEntrySet()) {
             String dumbRatingSystem = entry.getValue();
-            moviesDatabase.getMovies();
+
 
             char ratingAsChar = dumbRatingSystem.charAt(0);
 
@@ -140,21 +145,51 @@ public class MovieDatabaseUI {
      */
 
     private void addMovie() {
-
+        Path path = Paths.get("uppsala123\\src\\A5\\MovieSet.txt");
 
         System.out.print("Titel: ");
         String title = _scanner.nextLine().trim();
         int reviewScore = getNumberInput(_scanner, 1, 5, "Betyg (1 - 5): ");
         String reviewScoreStringed = String.valueOf(reviewScore);
         String realScoreIPromiseLawl = reviewScoreStringed.concat("/5");
-        moviesDatabase.fileDatabase();
-
-        moviesDatabase.movies.put(title,realScoreIPromiseLawl);
 
 
-        //TODO: Add call to add movie into database
+        moviesDatabase.movies.put(title, realScoreIPromiseLawl);
+        try {
+            //om filen inte finns så skapar vi den
+            if (!Files.exists(path)) {
+                Files.createFile(path);
+            }
+            List<String> lines = new ArrayList<String>();
+            List<String> allLines = Files.readAllLines(path);
 
+
+            //skriver ut innehållet
+
+            for (String line : allLines) {
+
+                String[] parts = line.split(";");
+                String part1 = parts[0];
+                String part2 = parts[1];
+                for (Map.Entry<String, String> entry : moviesDatabase.moviesEntrySet()) {
+                    lines.add(line);
+                    lines.add(part2);
+
+                    Files.write(path, lines);
+                }
+
+            }
+
+
+        } catch (IOException e) {
+            System.out.println("Oops! Something went wrong!");
+            e.printStackTrace();
+        }
     }
+
+    //TODO: Add call to add movie into database
+
+
 
 
     /**
