@@ -177,7 +177,7 @@ public class MovieDatabaseUI {
                     lines.add(part1);
                     moviesDatabase.movies.put(part1,part2);
 
-                    Files.write(path,lines);
+                    Files.write(path, Collections.singleton(line));
                 }
 
             }
