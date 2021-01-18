@@ -74,6 +74,8 @@ public class MovieDatabaseUI {
      * Get search string from user, search title in the movie
      * database and present the search result.
      */
+
+
     private void searchTitel() {
         System.out.print("Ange sökord: ");
         String title = _scanner.nextLine().trim();
@@ -122,10 +124,11 @@ public class MovieDatabaseUI {
         String title = _scanner.nextLine().trim();
         int reviewScore = getNumberInput(_scanner, 1, 5, "Betyg (1 - 5): ");
         String reviewScoreStringed = String.valueOf(reviewScore);
-        String realScoreIPromiseLawl = reviewScoreStringed.concat("/5");
-        String newMovieAdd = title.concat(";" + realScoreIPromiseLawl);
+        String reviewScoreStringedConcatW5 = reviewScoreStringed.concat("/5");
+        String newMovieAdd = title.concat(";" + reviewScoreStringedConcatW5);
         List<String> lines = new ArrayList<String>();
         lines.add(newMovieAdd);
+        moviesDatabase.movies.put(title,reviewScoreStringedConcatW5);
 
         try {
             //om filen inte finns så skapar vi den
