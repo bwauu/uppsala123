@@ -8,13 +8,16 @@ import java.util.*;
 
 /**
  * A command line user interface for a movie database.
+ * @author Benjamin Appelberg
+ * @version 1.0
+ *
  */
 public class MovieDatabaseUI {
     private Scanner _scanner;
     private final FileDatabase moviesDatabase = new FileDatabase();
 
     /**
-     * Construct a MovieDatabaseUI.
+     * Constructor (fileDatabase called on movieDatabase)
      */
     public MovieDatabaseUI() {
         moviesDatabase.fileDatabase();
@@ -71,16 +74,14 @@ public class MovieDatabaseUI {
         return input;
     }
     /**
-     * Get search string from user, search title in the movie
+     * SearchTitle gets search string from user, and searches title in the movie
      * database and present the search result.
      */
-
-
     private void searchTitel() {
         System.out.print("Ange sökord: ");
         String title = _scanner.nextLine().trim();
 
-        //TODO: Add call to search movie database based on input
+
         for (Map.Entry<String, String> entry : moviesDatabase.moviesEntrySet()) {
             String currentMovieTitle = entry.getKey().toLowerCase();
 
@@ -88,16 +89,17 @@ public class MovieDatabaseUI {
                 System.out.println(entry.getKey());
             }
         }
-        //TODO: Present results to user
+
     }
     /**
-     * Get search string from user, search review score in the movie
-     * database and present the search result.
+     * searchRewviewScore takes requested review as input from user as int and will displays result of all movies
+     * in movies database with that
+     * review score
      */
     private void searchReviewScore() {
         int review = getNumberInput(_scanner, 1, 5, "Ange minimibetyg (1 - 5): ");
 
-        //TODO: Add call to search movie database based on input
+
         for (Map.Entry<String, String> entry : moviesDatabase.moviesEntrySet()) {
             String dumbRatingSystem = entry.getValue();
 
@@ -109,12 +111,12 @@ public class MovieDatabaseUI {
                 System.out.println("Titel: " + entry.getKey() + " Betyg: " + entry.getValue());
             }
         }
-        //TODO: Present results to user
+
     }
 
     /**
-     * Get information from user on the new movie and add
-     * it to the database.
+     * addMovie gets information from user on the new movie and add
+     * it into the movies database.
      */
 
     private void addMovie() {
@@ -158,7 +160,6 @@ public class MovieDatabaseUI {
 
     }
 
-    //TODO: Add call to add movie into database
     /**
      * Return the main menu text.
      *

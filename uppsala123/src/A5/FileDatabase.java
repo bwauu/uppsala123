@@ -1,6 +1,10 @@
 package A5;
 /*
- * A class where Map "movies" is declared as a instance variable and used in methods.
+ * A class where Map "movies" is declared as a instance variable and used in methods different methods
+ *
+ * @author Benjamin Appelberg
+ * @version 1.0
+ *
  */
 
 import java.io.IOException;
@@ -9,11 +13,15 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
+
 public class FileDatabase {
 
     /* instance variable declaration */
     Map<String, String> movies;
 
+    /**
+     * A method that creates path to file of stored movies and reads each line in txt file
+     */
     public void fileDatabase() {
         //sökväg till filen text.txt i samma katalog som projektet, dvs en nivå ovan src
         Path path = Paths.get("uppsala123\\src\\A5\\MovieSet.txt");
@@ -38,7 +46,7 @@ public class FileDatabase {
                 movies.put(part1, part2);
                 Files.write(path, lines);
             }
-
+            // catch exception and sout String.
         } catch (IOException e) {
             System.out.println("Oops! Something went wrong!");
             e.printStackTrace();
@@ -46,7 +54,7 @@ public class FileDatabase {
     }
 
     /**
-     * insertion order. Map movies object extended to LinkedHashMap
+     *  FileDatabase will call new LinkedHashMap to this.movies
      */
     public FileDatabase() {
         this.movies = new LinkedHashMap<>();
